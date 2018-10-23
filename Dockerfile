@@ -6,5 +6,6 @@ RUN apt-get install nginx -y
 RUN echo '<marquee>Hola JP</marquee>' \
      > /var/www/html/index.html
 
+RUN apt-get update
 
 EXPOSE 80
