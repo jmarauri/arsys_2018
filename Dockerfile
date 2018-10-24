@@ -1,5 +1,9 @@
-From ubuntu:18.10
+FROM ubuntu:18.10
 MAINTAINER jmarauri@arsys.es
+
+RUN useradd jp
+
+WORKDIR /var/www/html
 
 RUN apt-get update
 RUN apt-get install nginx -y
@@ -10,7 +14,10 @@ RUN apt-get update
 
 EXPOSE 80
 
-# comentario practica 04 :)
-WORKDIR /var/www/html
+ENV DATABASE_IP 192.168.2.9
 
-ENTRYPOINT ["nginx","-g daemon off;"]
+RUN usermod -aG sudo jp
+
+USER jp
+
+#ENTRYPOINT ["nginx","-g daemon off;"]
