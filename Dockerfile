@@ -3,8 +3,6 @@ MAINTAINER jmarauri@arsys.es
 
 RUN useradd jp
 
-WORKDIR /var/www/html
-
 RUN apt-get update
 RUN apt-get install nginx -y
 RUN echo '<marquee>Hola JP</marquee>' \
@@ -20,4 +18,4 @@ RUN usermod -aG sudo jp
 
 USER jp
 
-#ENTRYPOINT ["nginx","-g daemon off;"]
+VOLUME [ "/my-data" ]
